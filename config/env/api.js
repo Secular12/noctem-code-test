@@ -1,3 +1,4 @@
 module.exports = env => ({
-  port: env('API_PORT', 4000)
+  host: env('API_HOST', 'localhost'),
+  port: env('API_PORT', 8000)
 })

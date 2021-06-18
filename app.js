@@ -1,7 +1,10 @@
 const express = require('express')
+const http = require('http')
 const app = express()
-const config = require('./config')
+const { api: { host, port } } = require('./config')
 
-app.listen(config.api.port, () => {
-  console.log(`listening on port: ${config.api.port}`)
-})
+http
+  .createServer(app)
+  .listen(port, host, () => {
+    console.log(`listening on: https://${host}:${port}`)
+  })
