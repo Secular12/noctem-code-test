@@ -1,6 +1,6 @@
 const {
   api: { host, port },
-  db: { url: dbUrl }
+  db
 } = require('./config')
 
 const express = require('express')
@@ -8,12 +8,17 @@ const app = express()
 const http = require('http')
 const mongoose = require('mongoose')
 
-mongoose.connect(dbUrl, { useNewUrlParser: true })
+mongoose.connect(db.url, {
+  pass: db.password,
+  useNewUrlParser: true,
+  user: db.user,
+  useUnifiedTopology: true
+})
 
-const db = mongoose.connection
+const database = mongoose.connection
 
-db.on('error', error => console.error(error))
-db.on('once', () => console.log('Connected to database'))
+database.on('error', error => console.error(error))
+database.on('once', () => console.log('Connected to database'))
 
 app.use(express.json())
 

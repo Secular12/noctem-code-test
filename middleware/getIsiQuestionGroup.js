@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
       return res.status(404).json({ message: `Cannot find an ISI Question Group with the ID: ${req.params.id}` })
     }
 
-    res.IsiQuestionGroup = IsiQuestionGroup
+    res.IsiQuestionGroup = isiQuestionGroup
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }

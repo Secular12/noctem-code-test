@@ -52,7 +52,7 @@ router.patch('/:id', getIsiQuestionGroup, async (req, res) => {
 
 router.delete('/:id', getIsiQuestionGroup, async (req, res) => {
   try {
-    await res.subscriber.remove()
+    await res.IsiQuestionGroup.remove()
     res.json({ message: 'Deleted ISI Question Group' })
   } catch (error) {
     res.status(500).json({ message: error.message })
